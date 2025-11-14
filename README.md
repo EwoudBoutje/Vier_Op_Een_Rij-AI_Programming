@@ -7,7 +7,7 @@
 
 
 ## Inhoudstafel
-- [Ducumentatie](./Documentatie/README.md) : Hier bevind alle doucmentatie die nodig was voor dit project.
+- [Documentatie](./Documentatie/README.md) : Hier bevind alle doucmentatie die nodig was voor dit project.
 - [Software](./Software/README.md) : Hier zitten alle code's in die we nodig hadden voor dit project te kunnen maken. 
 
 ## Hoe spelen?
