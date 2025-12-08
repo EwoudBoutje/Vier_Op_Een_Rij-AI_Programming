@@ -1,5 +1,4 @@
-# Planning van komende weken
+# planning code
 
-1. Optimaliseren van game
-2. Documentatie van code
-3. Code door iedereen laten begrijpen
+1. geluid toevoegen
+2. code verandern
