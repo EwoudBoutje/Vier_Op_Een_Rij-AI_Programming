@@ -290,13 +290,41 @@ class LeaderboardManager:
             json.dump(self.data, f)
 
     def add_fame(self, name, moves):
-        self.data['fame'].append({'name': name, 'moves': moves})
+        # 1. Controleer of naam al bestaat
+        found = False
+        for entry in self.data['fame']:
+            if entry['name'] == name:
+                found = True
+                # Alleen updaten als de nieuwe score beter (lager) is
+                if moves < entry['moves']:
+                    entry['moves'] = moves
+                break 
+        
+        # 2. Als niet gevonden, voeg nieuw toe
+        if not found:
+            self.data['fame'].append({'name': name, 'moves': moves})
+        
+        # 3. Sorteren en opslaan
         self.data['fame'].sort(key=lambda x: x['moves'])
         self.data['fame'] = self.data['fame'][:5]
         self.save_scores()
 
     def add_shame(self, name, moves):
-        self.data['shame'].append({'name': name, 'moves': moves})
+        # 1. Controleer of naam al bestaat
+        found = False
+        for entry in self.data['shame']:
+            if entry['name'] == name:
+                found = True
+                # Voor shame is 'lager' ook 'beter' (sneller verloren)
+                if moves < entry['moves']:
+                    entry['moves'] = moves
+                break
+        
+        # 2. Als niet gevonden, voeg nieuw toe
+        if not found:
+            self.data['shame'].append({'name': name, 'moves': moves})
+            
+        # 3. Sorteren en opslaan
         self.data['shame'].sort(key=lambda x: x['moves'])
         self.data['shame'] = self.data['shame'][:5]
         self.save_scores()
