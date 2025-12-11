@@ -12,4 +12,6 @@
 
 ## Hoe spelen?
 Clone de repository en open deze lokaal.
-Dubbelklik vervolgens op het .exe-bestand om het spel te starten.
+Open VS Code.
+Open de folder "GameWithAI" in terminal.
+Debug Connect4_with_score.py.

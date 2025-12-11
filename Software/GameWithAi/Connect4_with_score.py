@@ -290,41 +290,33 @@ class LeaderboardManager:
             json.dump(self.data, f)
 
     def add_fame(self, name, moves):
-        # 1. Controleer of naam al bestaat
         found = False
         for entry in self.data['fame']:
             if entry['name'] == name:
                 found = True
-                # Alleen updaten als de nieuwe score beter (lager) is
                 if moves < entry['moves']:
                     entry['moves'] = moves
                 break 
         
-        # 2. Als niet gevonden, voeg nieuw toe
         if not found:
             self.data['fame'].append({'name': name, 'moves': moves})
         
-        # 3. Sorteren en opslaan
         self.data['fame'].sort(key=lambda x: x['moves'])
         self.data['fame'] = self.data['fame'][:5]
         self.save_scores()
 
     def add_shame(self, name, moves):
-        # 1. Controleer of naam al bestaat
         found = False
         for entry in self.data['shame']:
             if entry['name'] == name:
                 found = True
-                # Voor shame is 'lager' ook 'beter' (sneller verloren)
                 if moves < entry['moves']:
                     entry['moves'] = moves
                 break
         
-        # 2. Als niet gevonden, voeg nieuw toe
         if not found:
             self.data['shame'].append({'name': name, 'moves': moves})
             
-        # 3. Sorteren en opslaan
         self.data['shame'].sort(key=lambda x: x['moves'])
         self.data['shame'] = self.data['shame'][:5]
         self.save_scores()
@@ -343,13 +335,35 @@ class GameApp:
     def __init__(self):
         pygame.init()
         
+        # --- AUDIO SETUP ---
+        pygame.mixer.init()
+        self.sounds = {}
+        sound_files = {
+            "drop":   ("drop_coin_fx.wav", 0.6),
+            "win":    ("win.mp3", 0.6),
+            "lose":   ("lose.mp3", 0.7),
+            "draw":   ("draw.wav", 0.7),
+            "select": ("select.mp3", 0.5)
+        }
+
+        print("--- Geluiden laden ---")
+        for key, (filename, volume) in sound_files.items():
+            try:
+                # Pad: sounds/bestandsnaam
+                path = os.path.join("sounds", filename)
+                self.sounds[key] = pygame.mixer.Sound(path)
+                self.sounds[key].set_volume(volume)
+                print(f"[OK] {filename}")
+            except Exception as e:
+                print(f"[FOUT] Kon {filename} niet laden: {e}")
+        print("----------------------")
+        
         info = pygame.display.Info()
         self.SCREEN_W = info.current_w
         self.SCREEN_H = info.current_h
         self.screen = pygame.display.set_mode((self.SCREEN_W, self.SCREEN_H), pygame.NOFRAME)
         pygame.display.set_caption("Connect 4 Ultimate")
         
-        # AANPASSING: 0.65 ipv 0.70 om het bord iets kleiner te maken -> meer ruimte voor tekst
         self.SQUARESIZE = int(self.SCREEN_H * 0.65 / (ROWS + 1))
         self.RADIUS = int(self.SQUARESIZE / 2 - 5)
         self.BOARD_W = COLUMNS * self.SQUARESIZE
@@ -389,7 +403,6 @@ class GameApp:
         self.state = STATE_MENU
         self.game_mode = MODE_PvAI
         
-        # Leaderboard
         self.leaderboard = LeaderboardManager()
         self.input_name = ""
         self.input_type = "FAME"
@@ -497,11 +510,9 @@ class GameApp:
             else:
                 header_text = f"Beurt: {'Speler 1 (Rood)' if self.turn == P1 else 'Speler 2 (Geel)'}"
 
-        # AANPASSING: Titel veel hoger (Y=35 ipv 50)
         title = self.font_L.render(header_text, True, header_color)
         self.screen.blit(title, title.get_rect(center=(self.SCREEN_W//2, 35)))
         
-        # AANPASSING: Teller ook hoger (Y=80 ipv 100) en GROTER (font_M)
         if self.game_mode == MODE_PvAI:
              move_txt = self.font_M.render(f"Jouw zetten: {self.move_count}", True, (200,200,200))
              self.screen.blit(move_txt, move_txt.get_rect(center=(self.SCREEN_W//2, 90)))
@@ -547,7 +558,6 @@ class GameApp:
 
         self.draw_slider()
 
-    # --- LEADERBOARD & INPUT SCHERMEN ---
     def draw_leaderboard_overlay(self):
         lb_w = 400
         lb_h = 700
@@ -558,7 +568,6 @@ class GameApp:
         pygame.draw.rect(self.screen, LEADERBOARD_BG, rect, border_radius=15)
         pygame.draw.rect(self.screen, (100,100,100), rect, 2, border_radius=15)
         
-        # --- DEEL 1: HALL OF FAME ---
         fame_y = rect.y + 20
         title_f = self.font_M.render("HALL OF FAME", True, (255, 215, 0))
         self.screen.blit(title_f, title_f.get_rect(center=(rect.centerx, fame_y)))
@@ -588,7 +597,6 @@ class GameApp:
             msg = self.font_S.render("Nog geen helden...", True, (100,100,100))
             self.screen.blit(msg, msg.get_rect(center=(rect.centerx, headers_y + 80)))
 
-        # --- DEEL 2: HALL OF SHAME ---
         shame_start_y = rect.centery + 20
         pygame.draw.line(self.screen, (100,100,100), (rect.x + 20, shame_start_y - 20), (rect.right - 20, shame_start_y - 20), 1)
 
@@ -640,7 +648,6 @@ class GameApp:
         t2 = self.font_M.render("Voer je naam in:", True, TEXT_COLOR)
         self.screen.blit(t2, t2.get_rect(center=(self.SCREEN_W//2, self.SCREEN_H//2 + 10)))
         
-        # Input Box
         input_rect = pygame.Rect(0, 0, 400, 80)
         input_rect.center = (self.SCREEN_W//2, self.SCREEN_H//2 + 80)
         pygame.draw.rect(self.screen, (255,255,255), input_rect, border_radius=10)
@@ -677,6 +684,9 @@ class GameApp:
         self.draw_leaderboard_overlay()
 
     def animate_drop(self, col, row, player):
+        if "drop" in self.sounds:
+            self.sounds["drop"].play()
+
         self.animating = True
         self.anim_col = col; self.anim_row = row; self.anim_player = player
         self.anim_y = -self.SQUARESIZE; target_y = row * self.SQUARESIZE
@@ -698,7 +708,6 @@ class GameApp:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: pygame.quit(); sys.exit()
                 
-                # --- INPUT HANDLING ---
                 if self.state == STATE_INPUT:
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_RETURN:
@@ -712,7 +721,6 @@ class GameApp:
                         elif event.key == pygame.K_BACKSPACE:
                             self.input_name = self.input_name[:-1]
                         else:
-                            # Veilige limiet van 12 chars voor de UI
                             if len(self.input_name) < 12 and event.unicode.isprintable():
                                 self.input_name += event.unicode
                     continue
@@ -732,9 +740,15 @@ class GameApp:
                         if math.hypot(mx - self.btn_home.centerx, my - self.btn_home.centery) < self.btn_home.width//2: self.state = STATE_MENU; continue
                         if math.hypot(mx - self.btn_restart.centerx, my - self.btn_restart.centery) < self.btn_restart.width//2: self.reset_board(); continue
                     if self.state == STATE_MENU:
-                        if self.menu_rects[MODE_PvAI].collidepoint((mx,my)): self.start_game(MODE_PvAI)
-                        elif self.menu_rects[MODE_PvP].collidepoint((mx,my)): self.start_game(MODE_PvP)
-                        elif self.menu_rects[MODE_AIvAI].collidepoint((mx,my)): self.start_game(MODE_AIvAI)
+                        if self.menu_rects[MODE_PvAI].collidepoint((mx,my)):
+                            if "select" in self.sounds: self.sounds["select"].play()
+                            self.start_game(MODE_PvAI)
+                        elif self.menu_rects[MODE_PvP].collidepoint((mx,my)):
+                            if "select" in self.sounds: self.sounds["select"].play()
+                            self.start_game(MODE_PvP)
+                        elif self.menu_rects[MODE_AIvAI].collidepoint((mx,my)):
+                            if "select" in self.sounds: self.sounds["select"].play()
+                            self.start_game(MODE_AIvAI)
                     elif self.state == STATE_PLAYING and not self.game_over and not self.animating and not self.ai_thinking:
                         is_human = False
                         if self.game_mode == MODE_PvP: is_human = True
@@ -753,13 +767,14 @@ class GameApp:
                                         self.game_over = True
                                         self.winner = self.turn
                                         self.win_coords = get_winning_coords(self.board, self.turn)
-                                        # Zet tijdstip voor delay
                                         self.game_over_time = pygame.time.get_ticks()
                                     else: 
                                         self.turn = P1 if self.turn == P2 else P2
 
                                     if not self.game_over and not get_valid_locations(self.board):
                                         self.game_over = True; self.winner = None; self.state = STATE_GAMEOVER
+                                        # Voor gelijkspel: ook delay
+                                        self.game_over_time = pygame.time.get_ticks()
                 
                 if event.type == pygame.MOUSEBUTTONUP:
                     self.dragging_slider = False
@@ -771,9 +786,21 @@ class GameApp:
                         self.slider_knob_rect.x = new_x
                         self.update_speed_from_slider()
             
-            # --- DELAY LOGICA NA WINST ---
             if self.game_over and self.state == STATE_PLAYING:
-                if current_time - self.game_over_time > 2000: # Wacht 2000 ms (2 sec)
+                if current_time - self.game_over_time > 2000: # wacht 2000ms
+                    
+                    # --- GELUIDEN AFSPELEN NA DELAY ---
+                    if self.winner is None:
+                        if "draw" in self.sounds: self.sounds["draw"].play()
+                    elif self.game_mode == MODE_PvAI:
+                        if self.winner == P1:
+                            if "win" in self.sounds: self.sounds["win"].play()
+                        elif self.winner == P2:
+                            if "lose" in self.sounds: self.sounds["lose"].play()
+                    elif self.game_mode == MODE_PvP:
+                        if "win" in self.sounds: self.sounds["win"].play()
+
+                    # --- TRANSITIES NAAR INPUT OF GAMEOVER ---
                     if self.game_mode == MODE_PvAI and ((self.winner == P1) or (self.winner == P2)):
                          self.state = STATE_INPUT
                          self.input_name = ""
@@ -820,6 +847,7 @@ class GameApp:
                             else: self.turn = P1 if self.turn == P2 else P2
                         if not self.game_over and not get_valid_locations(self.board):
                              self.game_over = True; self.winner = None; self.state = STATE_GAMEOVER
+                             self.game_over_time = pygame.time.get_ticks()
                         self.ai_thinking = False; self.ai_result = {}
                         self.last_move_time = pygame.time.get_ticks()
 
