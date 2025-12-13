@@ -1,15 +1,12 @@
 # Uitbreiding
 
-In onze oorspronkelijke doelstelling wilden we het spel uitbreiden met een groter raster en een aanpasbare moeilijkheidsgraad voor de AI. Helaas 
-is dit niet helemaal gelukt. De uitbreiding van het raster kon niet worden gerealiseerd vanwege tijdsgebrek. Ook de moeilijkheidsgraad hebben we 
-geprobeerd te implementeren, maar dit had een tegenovergesteld effect: de AI werd juist minder strategisch naarmate de moeilijkheid hoger werd, 
-waardoor we deze functionaliteit hebben verwijderd.
+Hoewel het project een volledig werkende versie van Vier op een Rij oplevert, zijn er ook enkele onderdelen die we niet hebben kunnen realiseren. 
+Een van de belangrijkste uitbreidingen die oorspronkelijk gepland waren, is het toevoegen van verschillende rastergroottes, zoals een groter en 
+extra groot speelveld. Dit idee bleek in de praktijk te complex en tijdrovend om binnen de beschikbare projectperiode correct te implementeren. 
+Een groter raster heeft invloed op bijna alle onderdelen van de code: de AI-berekeningen, de visuele weergave, de detectie van winstpatronen en de 
+animaties. Hierdoor werd duidelijk dat deze uitbreiding meer tijd zou vereisen dan beschikbaar was.
 
-We hebben echter wel andere uitbreidingen kunnen doorvoeren. Zo is er een optie-menu toegevoegd waarin spelers kunnen kiezen uit drie spelmodi: 
-speler tegen AI, speler tegen speler en AI tegen AI. Daarnaast hebben we een home-knop en een reset-knop toegevoegd, zodat het spel eenvoudig 
-opnieuw gestart kan worden.
-
-Verder hebben we een leaderboard geïmplementeerd waarin de beste winnaars (Hall of Fame) en slechtste verliezers (Hall of Shame) worden 
-bijgehouden. Tot slot hebben we het spel levendiger gemaakt met geluiden voor belangrijke gebeurtenissen, zoals het indrukken van knoppen, het 
-vallen van muntjes en bij winst of verlies. Deze uitbreidingen zorgen ervoor dat het spel overzichtelijker, dynamischer en aantrekkelijker is voor 
-de speler.
+Daarnaast wilden we drie moeilijkheidsgraden implementeren: makkelijk, normaal en moeilijk. Tijdens het ontwikkelen bleek echter dat een lagere 
+moeilijkheidsgraad onverwacht leidde tot een slechter functionerende AI dan logisch was, of zelfs tot onvoorspelbaar gedrag. Hierdoor voldeed de 
+functie niet aan de kwaliteitsverwachtingen en hebben we uiteindelijk besloten om deze optie te verwijderen, in plaats van een inconsistente 
+spelervaring aan te bieden.
