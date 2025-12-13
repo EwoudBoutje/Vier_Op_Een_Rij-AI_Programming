@@ -790,13 +790,14 @@ class GameApp:
                 if current_time - self.game_over_time > 2000: # wacht 2000ms
                     
                     # --- GELUIDEN AFSPELEN NA DELAY ---
-                    if self.winner is None:
-                        if "draw" in self.sounds: self.sounds["draw"].play()
-                    elif self.game_mode == MODE_PvAI:
+                    
+                    if self.game_mode == MODE_PvAI:
                         if self.winner == P1:
                             if "win" in self.sounds: self.sounds["win"].play()
                         elif self.winner == P2:
                             if "lose" in self.sounds: self.sounds["lose"].play()
+                        elif self.winner is None:
+                            if "draw" in self.sounds: self.sounds["draw"].play()
                     elif self.game_mode == MODE_PvP:
                         if "win" in self.sounds: self.sounds["win"].play()
 
