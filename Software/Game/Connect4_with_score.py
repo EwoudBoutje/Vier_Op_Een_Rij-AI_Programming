@@ -500,7 +500,9 @@ class GameApp:
         if self.game_over:
             if self.winner == P1: header_text = "ROOD WINT!"; header_color = PLAYER1_COLOR
             elif self.winner == P2: header_text = "GEEL WINT!"; header_color = PLAYER2_COLOR
-            else: header_text = "GELIJKSPEL"
+            else: 
+                header_text = "GELIJKSPEL"
+                self.sounds["draw"].play()
         else:
             if self.game_mode == MODE_AIvAI:
                 header_text = f"DEMO - AI vs AI"
@@ -796,8 +798,8 @@ class GameApp:
                             if "win" in self.sounds: self.sounds["win"].play()
                         elif self.winner == P2:
                             if "lose" in self.sounds: self.sounds["lose"].play()
-                        elif self.winner is None:
-                            if "draw" in self.sounds: self.sounds["draw"].play()
+                        # elif self.winner is None:
+                        #     if "draw" in self.sounds: self.sounds["draw"].play()
                     elif self.game_mode == MODE_PvP:
                         if "win" in self.sounds: self.sounds["win"].play()
 
