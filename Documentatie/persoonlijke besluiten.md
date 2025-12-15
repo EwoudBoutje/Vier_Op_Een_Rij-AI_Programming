@@ -1,4 +1,4 @@
-Thomas
+## Thomas
 
 ### Persoonlijk besluit
 
@@ -21,3 +21,11 @@ algoritme geschikt is voor Vier op een Rij.
 
 Ook heb ik geleerd hoe belangrijk goede samenwerking en planning zijn binnen een project. Ondanks dat niet alles gelukt is, ben
 ik tevreden over mijn bijdrage en het eindresultaat dat we als team hebben neergezet.
+
+
+## Ewoud
+
+### Persoonlijk besluit
+
+
+### Persoonlijke reflectie

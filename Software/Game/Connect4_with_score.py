@@ -219,23 +219,30 @@ def minimax(board, depth, alpha, beta, maximizingPlayer, piece, opp_piece, start
 def ai_thread_func(board_copy, result_container, my_piece, opp_piece, time_limit):
     try:
         start_time = time.time()
-        memo.clear()
+        memo.clear() # Reset het geheugen voor een nieuwe beurt
         valid_moves = get_valid_locations(board_copy)
-        
         if not valid_moves:
             result_container['col'] = None
             result_container['done'] = True
             return
 
         # 1. KILLER
+
+        # De AI test elke kolom
         for col in valid_moves:
             row = get_next_open_row(board_copy, col)
             board_copy[row][col] = my_piece
+
+            # Als ze ermee kan winnen → meteen die kolom spelen
             if winning_move(board_copy, my_piece):
                 result_container['col'] = col; result_container['done'] = True; return
             board_copy[row][col] = EMPTY
             
-        # 2. BLOCK
+        # 2. BLOCK 
+        # omgekeerde van KILLER
+        # Als de mens in 1 zet kan winnen
+        # Dan speelt de AI automatisch die blokkerende zet
+        
         for col in valid_moves:
             row = get_next_open_row(board_copy, col)
             board_copy[row][col] = opp_piece
@@ -244,17 +251,36 @@ def ai_thread_func(board_copy, result_container, my_piece, opp_piece, time_limit
             board_copy[row][col] = EMPTY
 
         # 3. THINK
+        # --- ITERATIVE DEEPENING ---
+        # In plaats van direct depth 6 te zoeken (duurt wss 10 seconden),
+        # zoeken we eerst depth 1, dan depth 2, dan 3, etc.
+        # Voordeel: Als tijdslimiet (bv. 1 seconde) op is tijdens berekenen van depth 5,
+        # hebben we nog resultaat van depth 4 om in te zetten
+        
         best_col = random.choice(valid_moves)
         limit = AI_MAX_DEPTH
+        
+        # Kleine optimalisatie voor blitz-games
         if time_limit < 0.2:
             limit = 2
 
         for depth in range(1, limit + 1):
+            # minimax aanroepen met huidige depth
             col, score = minimax(board_copy, depth, -math.inf, math.inf, True, my_piece, opp_piece, start_time, time_limit)
             
-            if time.time() - start_time > time_limit: break
-            if col is not None: best_col = col
-            if score > INF // 2: break
+            # --- TIJDSLIMIET (Loop break) ---
+            # Is de tijd op? Stop met dieper zoeken 
+            
+            if time.time() - start_time > time_limit: 
+                break
+            
+            # Als berekening succesvol was (tijd niet op), update de beste zet
+            if col is not None: 
+                best_col = col
+            
+            # Extra: winnende zet gevonden, niet dieper zoeken
+            if score > INF // 2: 
+                break
 
         result_container['col'] = best_col
         result_container['done'] = True
