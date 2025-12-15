@@ -43,6 +43,8 @@ Deze analyse toont aan dat het gekozen ontwerp – gebaseerd op klassieke AI-tec
 responsieve grafische interface – een efficiënte en toegankelijke oplossing vormt voor een uitdagend real-time 
 bordspel als Vier op een Rij.
 
+voor een samenvatting van de werking van de code kun je gaan naar [Werking AI](../Software/WerkingAI.md)
+
 
 
 ⬅️ [Terug naar overzicht](../README.md#Inhoud)
