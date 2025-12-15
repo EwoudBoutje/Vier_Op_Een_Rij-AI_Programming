@@ -1,4 +1,4 @@
-## Thomas
+## Thomas Demeulenare
 
 ### Persoonlijk besluit
 
@@ -22,13 +22,27 @@ algoritme geschikt is voor Vier op een Rij.
 Ook heb ik geleerd hoe belangrijk goede samenwerking en planning zijn binnen een project. Ondanks dat niet alles gelukt is, ben
 ik tevreden over mijn bijdrage en het eindresultaat dat we als team hebben neergezet.
 
-
-## Ewoud
+---
+## Ewoud Bouttelisier
 
 ### Persoonlijk besluit
 
 
 ### Persoonlijke reflectie
+
+---
+
+## **Michiel Geeraert**
+
+### Persoonlijk besluit
+
+Over het algemeen vind ik het project wel geslaagd ondanks we bepaalde uitbreidingen niet hebben gehaald. We hebben een werkende vier op een rij-solver. Hiermee kunnen we al erg blij zijn. Het deel waarmee ik erg blij ben, zijn de optimalisaties dat we hebben kunnen doen, dit waren er erg veel (iterative deepening, alpha beta pruning, transposition table, etc...). Dit zorgt er allemaal voor dat ons algoritme zeer snel zetten kan berekenen, wat heel soepel aanvoelt voor de gebruiker van het programma. De interface van het spel is ook zeer geslaagd.
+
+### Persoonlijke reflectie
+
+Tijdens het project heb ik op verschillende vlakken geholpen. Meegewerkt aan de code, geholpen aan de documentatie en het grootste deel van de Powerpoint gemaakt.
+
+Uiteraard is dit niet zonder problemen gegaan. Een voorbeeld hiervan is dat ik erg lang heb vastgezeten met GitHub. Hiermee had ik allemaal problemen omdat de repo stond in mijn Onedrive. Zo van die domme fouten overkomt je wel. Maar het grootste deel van ons project was wel positief in de plaats van negatief. Ook voor mezelf heb ik erg veel bijgeleerd over het minimax algoritme en alle bijkomende optimalisaties ervan. De samenwerking liep ook erg soepel tussen ons drie. Op dit vlak heb ik niets op aan te merken. Over het algemeen ben ik blij over het resultaat en ons proces van dit project.
 
 
 
