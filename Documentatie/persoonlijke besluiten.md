@@ -26,9 +26,12 @@ ik tevreden over mijn bijdrage en het eindresultaat dat we als team hebben neerg
 ## Ewoud Bouttelisier
 
 ### Persoonlijk besluit
-
+Als ik naar het eindresultaat kijk, ben ik trots op wat we hebben neergezet. Mijn doel was om een sterke, werkende AI te bouwen, en hoewel niet elke geplande feature de eindmeet heeft gehaald, staat er wel een solide spel. Het is jammer dat de implementatie van verschillende moeilijkheidsgraden niet in de finale versie zit, maar dit weegt niet op tegen de technische diepgang die we wel hebben bereikt met onze game. We hebben een functioneel en uitdagend spel afgeleverd waar we als groep tevreden over mogen zijn.
 
 ### Persoonlijke reflectie
+Binnen dit project heb ik mij voornamelijk gefocust op de softwareontwikkeling en de effectieve code. Dit was een leerzaam proces met de nodige ups en downs. Een van de grootste uitdagingen was het correct implementeren van het Minimax-algoritme in combinatie met Alpha-Beta pruning. Ik heb hier best wel mee geworsteld om de logica volledig kloppend te krijgen, maar door te blijven zoeken en testen heb ik nu wel een veel dieper inzicht in deze materie.
+
+Daarnaast heb ik ook geleerd om te gaan met features die niet werken zoals gehoopt. Ik heb meermaals geprobeerd om variabele moeilijkheidsgraden toe te voegen aan de AI, maar door technische obstakels slaagde ik er telkens niet in om dit stabiel te krijgen. Uiteindelijk hebben we besloten dit concept te verwerpen ten voordele van de kwaliteit van de basis-AI. Ondanks dat dit niet gelukt is, neem ik wel enorm veel kennis mee over Python en algoritmes die ik zonder dit project niet had gehad.
 
 ---
 
