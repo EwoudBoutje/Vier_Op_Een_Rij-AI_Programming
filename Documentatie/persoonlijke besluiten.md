@@ -35,7 +35,7 @@ Daarnaast heb ik ook geleerd om te gaan met features die niet werken zoals gehoo
 
 ---
 
-## **Michiel Geeraert**
+## Michiel Geeraert
 
 ### Persoonlijk besluit
 
