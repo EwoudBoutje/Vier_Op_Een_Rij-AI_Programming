@@ -9,4 +9,3 @@
 - [Conclusie](./Concluse.md)
 - [Bibliografie](./Bibliografie.md)
 - [persoonlijke besluiten](./persoonlijke%20besluiten.md)
-- [werkingAi](./WerkingAI.md)
