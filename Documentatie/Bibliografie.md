@@ -1,8 +1,9 @@
 # Bronnen
 
-1. Naresh, K. (2020). *Connect 4* [GitHub repository]. Geraadpleegd van [https://github.com/KaushalNaresh/Connect-4](https://github.com/KaushalNaresh/Connect-4)  
+1. Naresh, K. (2020). *Connect 4* [GitHub repository]. Geraadpleegd van [https://github.com/KaushalNaresh/Connect-4](https:/github.com/KaushalNaresh/Connect-4)  
 
-2. Naresh, K. (2020). *Connect 4 AI tutorial* [YouTube video]. Geraadpleegd van [https://www.youtube.com/watch?v=DV5d31z1xTI](https://www.youtube.com/watch?v=DV5d31z1xTI)  
+2. Naresh, K. (2020). *Connect 4 AI tutorial* [YouTube video]. Geraadpleegd van [https://www.youtube.com/watch?v=DV5d31z1xTI]
+(https://www.youtube.com/watch?v=DV5d31z1xTI)  
 
 3. Naresh, K. (2020). *Connect 4 minimax AI explained* [YouTube video]. Geraadpleegd van [https://www.youtube.com/watch?v=rbmk1qtVEmg](https://www.youtube.com/watch?v=rbmk1qtVEmg)  
 
