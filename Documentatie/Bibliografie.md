@@ -10,3 +10,8 @@
 4. Fontys Hogescholen. (2025). *Grokking Artificial Intelligence-algoritme* (Hoofdstuk 3, sectie "Adversarial Search", pp. 80-84, 88) [Cursusmateriaal]. Niet online beschikbaar.  
 
 5. OpenAI. (2025). *ChatGPT* [AI-assistent]. Geraadpleegd via [https://chat.openai.com](https://chat.openai.com)  
+
+
+
+
+⬅️ [Terug naar overzicht](../README.md#Inhoud)

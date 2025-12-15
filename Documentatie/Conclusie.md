@@ -14,3 +14,7 @@ geluidseffecten.
 
 Hoewel niet alles uit de uitbreidingslijst is geïmplementeerd, is het eindresultaat een volledig speelbaar, stabiel en duidelijk 
 uitgebreid spel dat voldoet aan de belangrijkste doelstelling en een passende oplossing biedt voor het gestelde probleem.
+
+
+
+⬅️ [Terug naar overzicht](../README.md#Inhoud)

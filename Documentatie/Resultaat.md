@@ -82,3 +82,7 @@ van de spelstatus.
 
 <img src="./afbeeldingen/knoppen.png" alt="knoppen" width="28%" >
 <img src="./afbeeldingen/schuifbalk ai tegen ai.png" alt="schuifbalk" width="28%" >
+
+
+
+⬅️ [Terug naar overzicht](../README.md#Inhoud)

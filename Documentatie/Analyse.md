@@ -42,3 +42,7 @@ professionele eindgebruikerervaring.
 Deze analyse toont aan dat het gekozen ontwerp – gebaseerd op klassieke AI-technieken, optimalisaties en een 
 responsieve grafische interface – een efficiënte en toegankelijke oplossing vormt voor een uitdagend real-time 
 bordspel als Vier op een Rij.
+
+
+
+⬅️ [Terug naar overzicht](../README.md#Inhoud)

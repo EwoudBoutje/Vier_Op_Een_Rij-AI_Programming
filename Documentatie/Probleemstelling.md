@@ -16,3 +16,7 @@ De doelgroep van dit project bestaat uit spelers van alle leeftijden die graag s
 zichzelf willen uitdagen tegen een digitale tegenstander. Om het spel aantrekkelijker te maken voor verschillende 
 spelers, worden er uitbreidingen voorzien zoals verschillende groottes van het speelveld (normaal, groot en extra 
 groot), zodat elke speler op zijn of haar eigen tempo kan spelen.
+
+
+
+⬅️ [Terug naar overzicht](../README.md#Inhoud)

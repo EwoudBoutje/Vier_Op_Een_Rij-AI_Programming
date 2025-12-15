@@ -10,3 +10,6 @@ Daarnaast wilden we drie moeilijkheidsgraden implementeren: makkelijk, normaal e
 moeilijkheidsgraad onverwacht leidde tot een slechter functionerende AI dan logisch was, of zelfs tot onvoorspelbaar gedrag. Hierdoor voldeed de 
 functie niet aan de kwaliteitsverwachtingen en hebben we uiteindelijk besloten om deze optie te verwijderen, in plaats van een inconsistente 
 spelervaring aan te bieden.
+
+
+⬅️ [Terug naar overzicht](../README.md#Inhoud)
