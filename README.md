@@ -11,7 +11,8 @@
 - [Software](./Software/README.md) : Hier zitten alle code's in die we nodig hadden voor dit project te kunnen maken. 
 
 ## Hoe spelen?
-Clone de repository en open deze lokaal.
-Open VS Code.
-Open de folder "GameWithAI" in terminal zodat deze map uw working-directory is.
-Debug Connect4_with_score.py.
+1. Clone de repository en open deze lokaal (of ga naar github).
+2. Open de repo Vier_Op_Een_Rij-AI_Programming.
+3. Ga naar de map "Software".
+4. Open de map "Game".
+5. Voer het bestand Connect.exe uit (of download het bestand op github).
